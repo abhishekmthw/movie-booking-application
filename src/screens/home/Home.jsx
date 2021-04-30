@@ -3,6 +3,7 @@ import Header from '../../common/Header';
 import moviesData from '../../common/moviesData';
 import genre from '../../common/genre';
 import artists from '../../common/artists';
+import { Link } from 'react-router-dom';
 import './Home.css';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -19,7 +20,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-
 
 const useStylesUpcoming = makeStyles((theme) => ({
     root: {
@@ -38,7 +38,7 @@ const useStylesUpcoming = makeStyles((theme) => ({
 const useStylesReleased = makeStyles((theme) => ({
     gridList: {
         width: '100%',
-        height: '105%',
+        height: '170vh',
     },
     gridListTile: {
         margin: '35px 0 0 35px',
@@ -109,15 +109,17 @@ export default function Home() {
             </div>
             <div className="flex-container">
                 <div className="left">
-                    <GridList cellHeight={450} className={classesReleased.gridList} cols={4}>
+                    <GridList cellHeight={350} className={classesReleased.gridList} cols={4}>
                         {moviesData.map((tile) => (
-                            <GridListTile key={tile.id} className={classesReleased.gridListTile}>
-                                <img src={tile.poster_url} alt={tile.title} />
-                                <GridListTileBar
-                                    title={tile.title}
-                                    subtitle={<span>Release Date: {tile.release_date}</span>}
-                                />
-                            </GridListTile>
+                            <Link key={tile.id} to={`/details/${tile.id}`}>
+                                <GridListTile key={tile.id} className={classesReleased.gridListTile}>
+                                    <img src={tile.poster_url} alt={tile.title} />
+                                    <GridListTileBar
+                                        title={tile.title}
+                                        subtitle={<span>Release Date: {new Date(tile.release_date).toDateString()}</span>}
+                                    />
+                                </GridListTile>
+                            </Link>
                         ))}
                     </GridList>
                 </div>
