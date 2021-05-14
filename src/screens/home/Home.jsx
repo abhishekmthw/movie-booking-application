@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Header from '../../common/Header';
+import Header from './../../common/header/Header';
 import moviesData from '../../common/moviesData';
 import genre from '../../common/genre';
 import artists from '../../common/artists';
@@ -42,6 +42,7 @@ const useStylesReleased = makeStyles((theme) => ({
     },
     gridListTile: {
         margin: '35px 0 0 35px',
+        position: "absolute",
     },
 }));
 
@@ -63,7 +64,7 @@ const useStylesForm = makeStyles((theme) => ({
         maxWidth: 240,
     },
     selectEmpty: {
-        marginTop: theme.spacing(2),
+        marginTop: theme.spacing(1),
     },
 }));
 

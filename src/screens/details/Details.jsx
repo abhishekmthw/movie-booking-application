@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link, NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import ReactPlayer from 'react-player';
-import Header from './../../common/Header';
+import Header from './../../common/header/Header';
 import moviesData from './../../common/moviesData';
 import './Details.css';
 
@@ -10,18 +10,18 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 
 const Details = () => {
 
-    const[starColor1, setStarColor1] = useState('black');
-    const[starColor2, setStarColor2] = useState('black');
-    const[starColor3, setStarColor3] = useState('black');
-    const[starColor4, setStarColor4] = useState('black');
-    const[starColor5, setStarColor5] = useState('black');
+    const [starColor1, setStarColor1] = useState('black');
+    const [starColor2, setStarColor2] = useState('black');
+    const [starColor3, setStarColor3] = useState('black');
+    const [starColor4, setStarColor4] = useState('black');
+    const [starColor5, setStarColor5] = useState('black');
 
     let params = useParams();
 
     const movie = moviesData.find(item => item.id === params.id);
 
     const changeStarColor1 = () => {
-        if(starColor1 === 'black'){
+        if (starColor1 === 'black') {
             setStarColor1('gold');
         }
         else {
@@ -29,7 +29,7 @@ const Details = () => {
         }
     }
     const changeStarColor2 = () => {
-        if(starColor2 === 'black'){
+        if (starColor2 === 'black') {
             setStarColor2('gold');
         }
         else {
@@ -37,7 +37,7 @@ const Details = () => {
         }
     }
     const changeStarColor3 = () => {
-        if(starColor3 === 'black'){
+        if (starColor3 === 'black') {
             setStarColor3('gold');
         }
         else {
@@ -45,7 +45,7 @@ const Details = () => {
         }
     }
     const changeStarColor4 = () => {
-        if(starColor4 === 'black'){
+        if (starColor4 === 'black') {
             setStarColor4('gold');
         }
         else {
@@ -53,7 +53,7 @@ const Details = () => {
         }
     }
     const changeStarColor5 = () => {
-        if(starColor5 === 'black'){
+        if (starColor5 === 'black') {
             setStarColor5('gold');
         }
         else {
@@ -64,7 +64,7 @@ const Details = () => {
     return (
         <>
             <div>
-                <Header />
+                <Header display={true} id={params.id} />
             </div>
             <div>
                 <NavLink to='/' activeStyle={{ textDecoration: "none", color: "black" }}>
@@ -89,11 +89,11 @@ const Details = () => {
                 </div>
                 <div className="right-details">
                     <Typography><b>Rate this Movie: </b></Typography>
-                    <StarBorderIcon style={{color: starColor1}} onClick={changeStarColor1}></StarBorderIcon>
-                    <StarBorderIcon style={{color: starColor2}} onClick={changeStarColor2}></StarBorderIcon>
-                    <StarBorderIcon style={{color: starColor3}} onClick={changeStarColor3}></StarBorderIcon>
-                    <StarBorderIcon style={{color: starColor4}} onClick={changeStarColor4}></StarBorderIcon>
-                    <StarBorderIcon style={{color: starColor5}} onClick={changeStarColor5}></StarBorderIcon>
+                    <StarBorderIcon style={{ color: starColor1 }} onClick={changeStarColor1}></StarBorderIcon>
+                    <StarBorderIcon style={{ color: starColor2 }} onClick={changeStarColor2}></StarBorderIcon>
+                    <StarBorderIcon style={{ color: starColor3 }} onClick={changeStarColor3}></StarBorderIcon>
+                    <StarBorderIcon style={{ color: starColor4 }} onClick={changeStarColor4}></StarBorderIcon>
+                    <StarBorderIcon style={{ color: starColor5 }} onClick={changeStarColor5}></StarBorderIcon>
                     <Typography style={{ margin: "16px 0" }}><b>Artists: </b></Typography>
                     <GridList cellHeight={150} cols={2}>
                         {movie.artists.map((tile) => (
